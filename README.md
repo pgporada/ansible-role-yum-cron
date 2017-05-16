@@ -8,6 +8,8 @@ Using this playbook with the name of `pgporada.yumcron`
 
     - name: Some Playbook
       hosts: localhost
+      become: true
+      become_method: sudo
       roles:
         - pgporada.yumcron
 
@@ -17,6 +19,8 @@ or if you have this locally
     - name: Some Playbook
       hosts: localhost
       connection: local
+      become: true
+      become_method: sudo
       roles:
         - ../ansile-role-yum-cron
 
