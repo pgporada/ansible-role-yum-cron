@@ -1,0 +1,25 @@
+---
+yumcron_nightly_update_selection: "security"
+yumcron_nightly_update_messages: "yes"
+yumcron_nightly_auto_download_updates: "yes"
+yumcron_nightly_auto_apply_updates: "yes"
+yumcron_nightly_notification_emitter: "email"
+yumcron_nightly_email_to: "ops@yourdomain.com"
+yumcron_nightly_email_from: "ops+yumcron-{{ ansible_nodename }}@yourdomain.com"
+yumcron_nightly_email_host: "localhost"
+yumcron_nightly_random_sleep_minutes: 10
+yumcron_nightly_auto_import_new_gpg_key: "True"
+yumcron_nightly_excluded_packages: "kernel* php* docker*"
+
+yumcron_hourly_update_selection: "security"
+yumcron_hourly_update_messages: "no"
+yumcron_hourly_auto_download_updates: "yes"
+yumcron_hourly_auto_apply_updates: "no"
+yumcron_hourly_notification_emitter: "None"
+yumcron_hourly_email_to: "ops@yourdomain.com"
+yumcron_hourly_email_from: "ops+yumcron-{{ ansible_nodename }}@yourdomain.com"
+yumcron_hourly_email_host: "localhost"
+yumcron_hourly_random_sleep_minutes: 10
+yumcron_hourly_auto_import_new_gpg_key: "True"
+yumcron_hourly_excluded_packages: "kernel* php* docker*"
+...

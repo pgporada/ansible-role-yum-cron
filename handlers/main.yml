@@ -1,0 +1,8 @@
+---
+- name: Restart yum-cron
+  become: true
+  become_method: sudo
+  service:
+    name: yum-cron
+    state: restarted
+...

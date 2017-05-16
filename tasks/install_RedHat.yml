@@ -1,0 +1,53 @@
+---
+- name: Provision yum-cron related packages
+  become: true
+  become_method: sudo
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - sendmail
+    - yum-cron
+    - cronie
+
+- name: Ensure yum-cron is enabled
+  become: true
+  become_method: sudo
+  service:
+    name: yum-cron
+    enabled: "yes"
+
+- name: Ensure cron daemon is started and enabled
+  become: true
+  become_method: sudo
+  service:
+    name: crond
+    state: started
+    enabled: "yes"
+
+- name: Ensure yum-cron.conf exists
+  become: true
+  become_method: sudo
+  template:
+    src: etc/yum/yum-cron.conf.j2
+    dest: /etc/yum/yum-cron.conf
+    owner: root
+    group: root
+    mode: 0664
+    force: "yes"
+  notify:
+    - Restart yum-cron
+
+- name: Ensure yum-cron-hourly.conf exists
+  become: true
+  become_method: sudo
+  template:
+    src: etc/yum/yum-cron-hourly.conf.j2
+    dest: /etc/yum/yum-cron-hourly.conf
+    owner: root
+    group: root
+    mode: 0664
+    force: "yes"
+  notify:
+    - Restart yum-cron
+...
