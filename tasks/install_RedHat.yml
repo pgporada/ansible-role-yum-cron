@@ -3,12 +3,11 @@
   become: true
   become_method: sudo
   yum:
-    name: "{{ item }}"
+    name:
+      - sendmail
+      - yum-cron
+      - cronie
     state: present
-  with_items:
-    - sendmail
-    - yum-cron
-    - cronie
 
 - name: Ensure yum-cron is enabled
   become: true
